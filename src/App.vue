@@ -1,17 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <News :apiKey="apiKey" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import News from "./components/News.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+  data: () => {
+    return {
+      apiKey: process.env.VUE_APP_NEWS_API_KEY,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    News,
+  },
+};
 </script>
 
 <style>
@@ -21,6 +25,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 </style>
