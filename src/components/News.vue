@@ -47,7 +47,6 @@ export default {
       items: [],
       country: "us",
       pageSize: 3,
-      showloader: false,
     };
   },
   computed: {
@@ -99,12 +98,11 @@ export default {
         .then((response) => {
           console.log("---data----", response.data);
           this.totalResults = response.data.totalResults;
-          //console.log("this.totalResults ",this.totalResults )
+          console.log("this.totalResults ", this.totalResults);
           response.data.articles.forEach((element) => {
             //console.log("----element---", element);
             this.items.push(element);
           });
-          this.showloader = false;
           //console.log("---articles----", this.items);
         })
         .catch((e) => {
@@ -119,7 +117,6 @@ export default {
             this.currentPage < this.pageCount
           ) {
             this.currentPage += 1;
-            this.showloader = true;
             this.loadData();
           }
         });
@@ -167,14 +164,21 @@ export default {
   font-weight: bold;
   font-size: large;
   display: flex;
-  padding-left: 0px;
+  padding-left: 20px;
+  text-align: left;
   cursor: pointer;
 }
 .item-description {
   display: flex;
   font-size: small;
-  margin-left: 0px;
-  padding-left: 10px;
+  padding-left: 20px;
+  text-align: left;
   margin-top: 10px;
+}
+.content {
+  display: flex;
+  margin-bottom: 30px;
+  float: left;
+  margin: 0;
 }
 </style>
